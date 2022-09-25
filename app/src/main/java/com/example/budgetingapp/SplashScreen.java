@@ -26,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         animation = AnimationUtils.loadAnimation(this,R.anim.animation);
-        imageView = findViewById(R.id.imageView);
+        imageView = findViewById(R.id.logo);
         appName = findViewById(R.id.appName);
 
         imageView.setAnimation(animation);
