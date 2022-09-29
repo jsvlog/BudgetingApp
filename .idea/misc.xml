@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/win8/AndroidStudioProjects/BudgetingApp/app/src/main/res/layout/activity_budget.xml" value="0.2703125" />
+        <entry key="..\:/Users/win8/AndroidStudioProjects/BudgetingApp/app/src/main/res/layout/activity_main.xml" value="0.2703125" />
         <entry key="..\:/Users/yui/AndroidStudioProjects/BudgetingApp/app/src/main/res/drawable/borders.xml" value="0.1945" />
         <entry key="..\:/Users/yui/AndroidStudioProjects/BudgetingApp/app/src/main/res/drawable/buttons.xml" value="0.1945" />
         <entry key="..\:/Users/yui/AndroidStudioProjects/BudgetingApp/app/src/main/res/drawable/ic_add.xml" value="0.1945" />
