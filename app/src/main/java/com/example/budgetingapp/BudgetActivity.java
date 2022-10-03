@@ -1,8 +1,10 @@
 package com.example.budgetingapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,20 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.joda.time.DateTime;
+import org.joda.time.Months;
+import org.joda.time.MutableDateTime;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Month;
 
 public class BudgetActivity extends AppCompatActivity {
     private FloatingActionButton fab;
@@ -59,17 +71,45 @@ public class BudgetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String butgetItem = itemSpinner.getSelectedItem().toString();
+                String budgetItem = itemSpinner.getSelectedItem().toString();
                 String budgetAmount = amount.getText().toString();
 
-                if(butgetItem.equals("select item")){
+                if(budgetItem.equals("select item")){
                     Toast.makeText(BudgetActivity.this, "please select item", Toast.LENGTH_SHORT).show();
 
                 }
                 if(budgetAmount.isEmpty()){
                     amount.setError("please enter amount");
-                }
+                }else{
 
+
+                    String id = budgetRef.push().getKey();
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
+                    Calendar cal = Calendar.getInstance();
+                    String date = dateFormat.format(cal.getTime());
+
+                    MutableDateTime epoch = new MutableDateTime();
+                    epoch.setDate(0);
+                    DateTime now = new DateTime();
+                    Months months = Months.monthsBetween(epoch,now);
+
+                    Data data = new Data(budgetItem,date,id,null,Integer.parseInt(budgetAmount),months.getMonths());
+
+                    budgetRef.child(id).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(BudgetActivity.this,"added successfuly",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(BudgetActivity.this,"failed to add",Toast.LENGTH_LONG).show();
+                        }
+
+                        }
+                    });
+
+
+                }
+                dialog.dismiss();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

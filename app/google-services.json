@@ -1,41 +1,63 @@
 {
   "project_info": {
-    "project_number": "377727700988",
-    "project_id": "personal-budgeting-app-43d7b",
-    "storage_bucket": "personal-budgeting-app-43d7b.appspot.com"
+    "project_number": "630142719491",
+    "firebase_url": "https://register2-50316-default-rtdb.firebaseio.com",
+    "project_id": "register2-50316",
+    "storage_bucket": "register2-50316.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:377727700988:android:f551714d59ae4cd22a2c79",
+        "mobilesdk_app_id": "1:630142719491:android:10304591619dcb5603e036",
         "android_client_info": {
           "package_name": "com.example.budgetingapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "377727700988-8qg4e0bsnf0uo0o934hfcglttr80jc2k.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.budgetingapp",
-            "certificate_hash": "1b6482b7f62160f3d8f889b70e9b55f9c7e0f44a"
-          }
-        },
-        {
-          "client_id": "377727700988-jqc83vnkvvjih0djblfqu4cvqnsfielp.apps.googleusercontent.com",
+          "client_id": "630142719491-9kh1ak2k02m8t15k8amrugsmrrh7h5cm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDbdjMUDnZBr0cRtNFGCVzqJMEcJKSb980"
+          "current_key": "AIzaSyDZNd0rSTG6fcyUnzMpFow9zUUmSEWpTYY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "377727700988-jqc83vnkvvjih0djblfqu4cvqnsfielp.apps.googleusercontent.com",
+              "client_id": "630142719491-9kh1ak2k02m8t15k8amrugsmrrh7h5cm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630142719491:android:6224ff5d71fa688503e036",
+        "android_client_info": {
+          "package_name": "com.example.registration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630142719491-9kh1ak2k02m8t15k8amrugsmrrh7h5cm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZNd0rSTG6fcyUnzMpFow9zUUmSEWpTYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630142719491-9kh1ak2k02m8t15k8amrugsmrrh7h5cm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
