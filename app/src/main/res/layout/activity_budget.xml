@@ -16,6 +16,7 @@
         android:theme="@style/ThemeOverlay.AppCompat"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
     <TextView
+        android:id="@+id/totalbudget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="total budget ammount: $0"

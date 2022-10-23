@@ -15,6 +15,13 @@ public class Data {
         this.amount = amount;
         this.month = month;
     }
+    public Data(String item, String date, String id, int amount, int month) {
+        this.item = item;
+        this.date = date;
+        this.id = id;
+        this.amount = amount;
+        this.month = month;
+    }
 
     public String getItem() {
         return item;
