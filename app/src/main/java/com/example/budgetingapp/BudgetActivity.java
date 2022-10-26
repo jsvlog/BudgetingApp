@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.joda.time.MutableDateTime;
@@ -144,6 +145,7 @@ public class BudgetActivity extends AppCompatActivity {
                 }
                 if(budgetAmount.isEmpty()){
                     amount.setError("please enter amount");
+
                 }else{
 
 
