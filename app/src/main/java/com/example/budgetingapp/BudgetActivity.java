@@ -57,7 +57,7 @@ public class BudgetActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         totalBudget = findViewById(R.id.totalbudget);
-        totalBudget = findViewById(R.id.totalbudget);
+
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
