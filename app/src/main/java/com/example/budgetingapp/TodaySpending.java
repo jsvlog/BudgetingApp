@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,6 +37,7 @@ public class TodaySpending extends AppCompatActivity {
         private FloatingActionButton fab;
         private FirebaseAuth mAuth;
         private DatabaseReference todayref;
+        private TodayAdapter adapter;
 
 
 
@@ -67,6 +69,26 @@ public class TodaySpending extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        String id = todayref.push().getKey();
+
+        FirebaseRecyclerOptions<Data> options = new FirebaseRecyclerOptions.Builder<Data>()
+                .setQuery(todayref,Data.class).build();
+        adapter = new TodayAdapter(options,this);
+
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     private void addSpent() {
