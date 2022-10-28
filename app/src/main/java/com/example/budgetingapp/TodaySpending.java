@@ -21,8 +21,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.joda.time.DateTime;
 import org.joda.time.Months;
@@ -54,6 +58,11 @@ public class TodaySpending extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         todayref = FirebaseDatabase.getInstance().getReference().child("expense").child(mAuth.getCurrentUser().getUid());
 
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
+        Calendar cal = Calendar.getInstance();
+        String date = dateFormat.format(cal.getTime());
+
+
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -69,15 +78,38 @@ public class TodaySpending extends AppCompatActivity {
             }
         });
 
+        todayref.orderByChild("date").equalTo(date).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int totalAmount = 0;
+
+                for (DataSnapshot snap: snapshot.getChildren()){
+                    Data data = snap.getValue(Data.class);
+                    totalAmount = totalAmount + data.getAmount();
+                    String sTotal = String.valueOf("Today expense: $" + totalAmount);
+                    todaySpent.setText(sTotal);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         String id = todayref.push().getKey();
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyy");
+        Calendar cal = Calendar.getInstance();
+        String date = dateFormat.format(cal.getTime());
+        Query orderByDate = todayref.orderByChild("date").equalTo(date);
 
         FirebaseRecyclerOptions<Data> options = new FirebaseRecyclerOptions.Builder<Data>()
-                .setQuery(todayref,Data.class).build();
+                .setQuery(orderByDate,Data.class).build();
         adapter = new TodayAdapter(options,this);
 
 
@@ -146,6 +178,7 @@ public class TodaySpending extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 dialog.dismiss();
             }
         });
